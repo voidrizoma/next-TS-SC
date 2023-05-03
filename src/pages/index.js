@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
-import { ThemeProvider } from "styled-components";
 import Head from "next/head";
 import Link from "next/link";
-import { GlobalStyles } from "@/styles/Global";
 import Layout from "@/Commons/Layout/Layout";
 import {
   CardsContainer,
@@ -10,8 +8,6 @@ import {
   CardTitle,
   CardBody,
 } from "@/Components/Cards/Cards.styled";
-import { light, dark, blue, green, brown, pink } from "@/styles/Theme.styled";
-import { ThemeButton, ThemeContainer } from "@/styles/ThemeSwitch.styled";
 
 const defaultEndpoint = `https://rickandmortyapi.com/api/character/`;
 
@@ -26,7 +22,6 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ data }) {
-  const [selectedTheme, setSelectedTheme] = useState(light);
   const { info, results: defaultResults = [] } = data;
   const [results, updateResults] = useState(defaultResults);
   const [page, updatePage] = useState({
@@ -81,9 +76,6 @@ export default function Home({ data }) {
 
     updatePage({ current: endpoint });
   }
-  const HandleThemeChange = (theme) => {
-    setSelectedTheme(theme);
-  };
 
   return (
     <>
@@ -93,40 +85,17 @@ export default function Home({ data }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ThemeProvider theme={selectedTheme}>
-        <GlobalStyles />
         <Layout>
           <main>
-          <ThemeContainer>
-          <span>Themes: </span>
-          <ThemeButton
-            className={`light ${selectedTheme === light ? "active" : ""}`}
-            onClick={() => HandleThemeChange(light)}></ThemeButton>
-          <ThemeButton
-            className={`dark ${selectedTheme === dark ? "active" : ""}`}
-            onClick={() => HandleThemeChange(dark)}></ThemeButton>
-          <ThemeButton
-            className={`blue ${selectedTheme === blue ? "active" : ""}`}
-            onClick={() => HandleThemeChange(blue)}></ThemeButton>
-          <ThemeButton
-            className={`green ${selectedTheme === green ? "active" : ""}`}
-            onClick={() => HandleThemeChange(green)}></ThemeButton>
-          <ThemeButton
-            className={`brown ${selectedTheme === brown ? "active" : ""}`}
-            onClick={() => HandleThemeChange(brown)}></ThemeButton>
-          <ThemeButton
-            className={`pink ${selectedTheme === pink ? "active" : ""}`}
-            onClick={() => HandleThemeChange(pink)}></ThemeButton>
-        </ThemeContainer>
-            <form className="search" onSubmit={handleOnSubmitSearch}>
+            <form onSubmit={handleOnSubmitSearch}>
               <input name="query" type="search" />
               <button>Search</button>
             </form>
-            <CardsContainer className="grid">
+            <CardsContainer>
               {results.map((result) => {
                 const { id, name, image } = result;
                 return (
-                  <Card key={id} className="card">
+                  <Card key={id}>
                     <Link href="/character/[id]" as={`/character/${id}`}>
                       <CardTitle>{name}</CardTitle>
                       <CardBody>
@@ -142,7 +111,6 @@ export default function Home({ data }) {
             </p>
           </main>
         </Layout>
-      </ThemeProvider>
     </>
   );
 }

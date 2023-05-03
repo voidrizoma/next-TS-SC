@@ -29,11 +29,11 @@ export default function Character({ data }) {
       </Head>
       <Layout>
         <main>
-          <div className="profile">
-            <div className="profile-image">
+          <div>
+            <div>
               <img src={image} alt={name} />
             </div>
-            <div className="profile-details">
+            <div>
               <h2>Character Details</h2>
               <ul>
                 <li>
@@ -63,8 +63,8 @@ export default function Character({ data }) {
               </ul>
             </div>
           </div>
-          <p className="back">
-            <Link href="/">BAck</Link>
+          <p>
+            <Link href="/">Back</Link>
           </p>
         </main>
       </Layout>
