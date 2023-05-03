@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const Footer = styled.footer`
-  background-color: hsl(0, 1%, 38%);
   padding: 40px 20px;
   text-align: center;
-  color: hsl(0, 0%, 100%);
+  background-color: ${({ theme }) => theme.colors.footer};
+  color: ${({ theme }) => theme.colors.background};
 
   a {
-    color: hsl(0, 0%, 100%);
+    color: ${({ theme }) => theme.colors.background};
   }
 `;
