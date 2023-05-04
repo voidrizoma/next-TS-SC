@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import Layout from "@/Commons/Layout/Layout";
+import Layout from "../Commons/Layout/Layout";
 import {
   CardsContainer,
   Card,
   CardTitle,
   CardBody,
-} from "@/Components/Cards/Cards.styled";
+} from "../Components/Cards/Cards.styled";
 
 const defaultEndpoint = `https://rickandmortyapi.com/api/character/`;
 

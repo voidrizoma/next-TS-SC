@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import Layout from "@/Commons/Layout/Layout";
+import Layout from "../../../Commons/Layout/Layout";
 
 const defaultEndpoint = `https://rickandmortyapi.com/api/character/`;
 

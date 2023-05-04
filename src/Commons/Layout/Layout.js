@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import Header from "../Header/Header";
-import { GlobalStyles } from "@/styles/Global";
+import { GlobalStyles } from "../../styles/Global";
 import { ThemeProvider } from "styled-components";
 import Footer from "../Footer/Footer";
-import { light, dark, blue, green, brown, pink } from "@/styles/Theme.styled";
-import { ThemeButton, ThemeContainer } from "@/styles/ThemeSwitch.styled";
+import { light, dark, blue, green, brown, pink } from "../../styles/Theme.styled";
+import { ThemeButton, ThemeContainer } from "../../styles/ThemeSwitch.styled";
 
 export default function Layout({ children }) {
   const [selectedTheme, setSelectedTheme] = useState(light);
